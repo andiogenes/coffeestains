@@ -1,67 +1,52 @@
 \documentclass[a4paper, 11pt, BCOR = 0 pt, oneside, english]{scrartcl}
 \usepackage{tikz}
-\usepackage{verbatim}
+\usepackage{fancyvrb}
 \usetikzlibrary{arrows, shapes}
 \usepackage[light, largesmallcaps]{kpfonts}
 \usepackage{coffeestains}
 \usepackage[useregional]{datetime2}
 \usepackage{gitinfo2}
 \usepackage{scrlayer-scrpage}
-\clearpairofpagestyles
-\usepackage{lastpage}
+\usepackage{tcolorbox}
+\usepackage{varioref}
 \usepackage[english]{babel}
 \author{Patrick Bideault}
 \usepackage{hyperref}
 \hypersetup{
 	  pdftitle = LaTeX Coffee Stains,
           colorlinks,
-	  linkcolor={teal!60!black},
-          citecolor={teal!60!black},
+	  linkcolor={brown!60!black},
+          citecolor={brown!60!black},
           urlcolor={brown!60!black}
         }
-% \ifoot{\textsf{HBS / RG 2021 / aerial systems request for quotations / Novafly
-%     financial offers
-%     \\\textcolor{lightgray}{version \gitRel{} (\gitAbbrevHash{}) -- \DTMdisplaydate{gitdate}}
-%   }}
-% \cfoot{}
-% \ofoot{\thepage/\pageref{LastPage}}
-\newpairofpagestyles{titlepage}{
-  \ifoot{The command used for the above coffee stain is
-    \verb|\coffeestainA{0.9}{0.85}{-25}{5cm}{1.3cm}|\\\textcolor{lightgray}{version
-      \gitRel{} (\gitAbbrevHash{}) -- \today}} 
-  \cfoot{}
-  \ofoot{\thepage/\pageref{LastPage}}
-  }
-\newpairofpagestyles{page2}{
-  \ifoot{The command used for the above coffee stain is \verb|\coffeestainC{0.6}{1}{180}{0}{0}|\\\textcolor{lightgray}{version \gitRel{} (\gitAbbrevHash{})}}% -- \DTMusedate{gitdate}}}
-  \cfoot{}
-  \ofoot{\thepage/\pageref{LastPage}}
-  }
+\ifoot{\textsf{\textcolor{lightgray}{version \gitRel{} -- \DTMtoday}
+  }}
+\cfoot{}
+\ofoot{\thepage}
 
-  \begin{document}
-  \pagestyle{titlepage}
+\begin{document}
+
 \title{LaTeX Coffee Stains}
 \author{a package by Hanno Rein\\
   maintained by Patrick Bideault\\
   \texttt{pb-latex@gmx.fr}\\
   ~\\
   \url{https://framagit.org/Pathe/coffeestains}}
-%% VERSION NUMBER
-% \renewcommand{\today}{May 1, 2021}
+\renewcommand{\today}{version \gitRel{} -- \DTMtoday{}}
 \maketitle
 
 \coffeestainA{0.9}{0.85}{-25}{5cm}{1.3cm}
-
+\label{stainA}
 \section{Introduction}
 This package provides an essential feature to \LaTeX~that has been missing for
 too long. It adds a coffee stain to your documents. A lot of time can be saved
 by printing stains directly on the page rather than adding it manually. You can
 choose from four different stain types:
 \begin{itemize}
-  \item[A.] $270^\circ$ circle stain with two tiny splashes 
-  \item[B.] $60^\circ$ circle stain 
-  \item[C.] two splashes with light colours
-  \item[D.] and a colourful twin splash.
+\item[A.] $270^\circ$ circle stain with two tiny splashes, like \vpageref{stainA}
+  \item[B.] $60^\circ$ circle stain, as \vpageref{stainB}
+  \item[C.] two splashes with light colours, as \vpageref{stainC}
+  \item[D.] and a colourful twin splash, as \vpageref{stainD}
 \end{itemize}
 
 \section{Usage}
@@ -71,8 +56,18 @@ Then include the following line in the header of your document:
 \begin{verbatim}
 \usepackage{coffeestains}
 \end{verbatim}
+
+\vfill{}
+
+\begin{tcolorbox}
+  The command used for the above coffee stain is
+
+  \verb|\coffeestainA{0.9}{0.85}{-25}{5cm}{1.3cm}|
+\end{tcolorbox}
 \newpage{}
-  \pagestyle{page2}
+\coffeestainC{1}{1}{180}{0}{-5 mm}
+\label{stainC}
+
 To place a coffee stain on a page, put one of the following commands in the source code of the relevant page: 
 \begin{verbatim}
 \coffeestainA{alpha}{scale}{angle}{xoff}{yoff}
@@ -80,6 +75,7 @@ To place a coffee stain on a page, put one of the following commands in the sour
 \coffeestainC{alpha}{scale}{angle}{xoff}{yoff}
 \coffeestainD{alpha}{scale}{angle}{xoff}{yoff}
 \end{verbatim}
+
 \begin{itemize}
 \item \texttt{alpha} is the transparency factor $\in [0,1]$;
 \item \texttt{scale} is the scale factor, and the standard is \texttt{scale}=1;
@@ -92,19 +88,17 @@ To place a coffee stain on a page, put one of the following commands in the sour
 
 
 \section{Copyright}
-You can freely distribute this package as I do not believe in imaginary
+You can freely distribute this package as we do not believe in imaginary
 property. All stains were self-made, photographed by Hanno Rein, processed with gimp
-and traced with Inkscape. Donations should be made in coffee only. My address
-is
+and traced with Inkscape. Donations should be made in coffee only to
 \begin{quote}
 Hanno Rein\\
-DAMTP, CMS\\
-Wilberforce Road\\
-Cambridge CB3 0WA\\
-United Kingdom
+University of Toronto at Scarborough\\
+DPES Physics and Astrophysics\\
+1265 Military Trail\\
+Toronto, Ontario M1C 1A4\\
+Canada
 \end{quote}
-See more coffee stains on the next pages.
-\coffeestainC{0.6}{1}{180}{0}{0}
 
 \section{Desired improvements}
 This package obviously helps, but many stains are still manually added to
@@ -115,10 +109,18 @@ And our efforts shall go beyond the liquid stains: how many documents get their
 grease stains manually printed in repair shops? The \LaTeX{} community shall
 address this issue and create the adequate tools.
 
+\vfill{}
+
+\begin{tcolorbox}
+  The command used for the above coffee stain is
+
+  \verb|\coffeestainC{1}{1}{180}{0}{-5 mm}|
+\end{tcolorbox}
+\newpage{}
 \section{Change Log}
 \begin{itemize}
 \item April 3, 2009: initial coffee stain by Hanno Rein. In the git repository,
-  version is now tagged 0.1.
+  this version is now tagged 0.1.
 \item November 23, 2010: \texttt{coffee2.sty}, an improved version that works
   with pdflatex. Thanks to Evan Sultanik! This version is now tagged 0.2.
 \item March 24, 2011: \texttt{coffee3}, another improved version that works
@@ -134,24 +136,45 @@ address this issue and create the adequate tools.
   stain itself, not anymore to the centre of the page. Version 0.5.
 \end{itemize}
 
+\coffeestainB{0.7}{1}{0}{8 pt}{0}
+\label{stainB}
+
 \section{Eternal mottos}
 
 Coffee is great.
 
 \vspace{5mm}
 
-\noindent{}
+\noindent
 Coffee will save the world.
 
-\newpage
 \vfill{}
-This page was intentionally left blank.
-\coffeestainD{0.4}{0.5}{90}{0}{0}
-\vfill{}
-\newpage
-\coffeestainB{0.7}{1}{0}{0}{0}
-\newpage
-\coffeestainA{0.7}{0.75}{2}{0}{0}
-Coffee will save the world.
 
+\begin{tcolorbox}
+  The command used for the above coffee stain is
+
+  \verb|\coffeestainB{0.7}{1}{0}{8 pt}{0}|
+\end{tcolorbox}
+
+\begin{tcolorbox}
+  The command used for the coffee stain on the next page is
+
+  \verb|\coffeestainD{0.4}{0.5}{90}{3 cm}{4 cm}|
+\end{tcolorbox}
+
+\newpage{}
+\pagestyle{empty}
+~\\
+
+\coffeestainD{0.4}{0.5}{90}{3 cm}{4 cm}
+\label{stainD}
+
+\vfill{}
+\begin{center}
+\textsc{This page was intentionally left blank}
+
+but we had to ruin it by letting you know.
+\end{center}
+
+\vfill{}
 \end{document}
