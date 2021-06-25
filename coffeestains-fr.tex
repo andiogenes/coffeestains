@@ -35,7 +35,7 @@
 \renewcommand{\today}{version \gitRel{} -- \DTMtoday{}}
 \maketitle
 
-\coffeestainA{0.9}{0.85}{-25}{5cm}{1.3cm}
+\coffeestainA{0.9}{0.85}{-5}{6.5cm}{2.3cm}
 \label{stainA}
 \section{Introduction}
 Cette extension offre une fonctionnalité qui manquait à \LaTeX{} depuis
@@ -46,12 +46,12 @@ d'ajouter manuellement ces taches, un temps précieux est
 Quatre modèles de taches sont proposés :
 
 \begin{itemize}
-\item[A.] une tache ronde formant un arc de $270^\circ$, orné de deux petites
+\item \verb|\coffeestainA|, une tache ronde formant un arc de $270^\circ$, orné de deux petites
   taches, comme \vpageref[sur la présente page]{stainA} ;
-  \item[B.] une tache formant un arc de $60^\circ$ environ, comme en
+\item \verb|\coffeestainB|, une tache formant un arc de $60^\circ$ environ, comme en
     \vpageref{stainB} ;
-  \item[C.] deux taches de couleur pâle, visibles en \vpageref{stainC} ;
-  \item[D.] et une tache double, très colorée, que l'on admirera en \vpageref{stainD}.
+\item \verb|\coffeestainC|, deux taches de couleur pâle, visibles en \vpageref{stainC} ;
+\item \verb|\coffeestainD|, et une tache double, très colorée, que l'on admirera en \vpageref{stainD}.
 \end{itemize}
 
 \section{Utilisation}
@@ -72,7 +72,7 @@ préambule de votre document :
 \begin{tcolorbox}
   La tache de café ci-dessus a été obtenue grâce à l'instruction suivante :
 
-  \verb|\coffeestainA{0.9}{0.85}{-25}{5cm}{1.3cm}|
+  \verb|\coffeestainA{0.9}{0.85}{-5}{6.5cm}{2.3cm}|
 \end{tcolorbox}
 \newpage{}
 \coffeestainB{0.7}{1}{-30}{18 pt}{-135 pt}
