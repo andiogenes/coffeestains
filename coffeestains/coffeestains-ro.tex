@@ -1,0 +1,177 @@
+\documentclass[a4paper, 11pt, BCOR = 0 pt, oneside]{scrartcl}
+\usepackage{tikz}
+\usepackage{fancyvrb}
+\usetikzlibrary{arrows, shapes}
+\usepackage[light, largesmallcaps]{kpfonts}
+\usepackage{coffeestains}
+\usepackage[useregional]{datetime2}
+\usepackage{gitinfo2}
+\usepackage{scrlayer-scrpage}
+\usepackage{tcolorbox}
+\usepackage{varioref}
+\usepackage[romanian]{babel}
+\author{Patrick Bideault}
+\usepackage{hyperref}
+\hypersetup{
+	  pdftitle = LaTeX Coffee Stains,
+          colorlinks,
+	  linkcolor={brown!60!black},
+          citecolor={brown!60!black},
+          urlcolor={brown!60!black}
+        }
+\ifoot{\textsf{\textcolor{lightgray}{version \gitRel{} -- \DTMtoday}
+  }}
+\cfoot{}
+\ofoot{\textsf{\thepage}}
+
+\begin{document}
+
+\title{LaTeX Coffee Stains}
+\author{un pachet de Hanno Rein\\
+întreținut de Patrick Bideault\\% vérifier
+  \texttt{pb-latex@gmx.fr}\\
+  ~\\
+  \url{https://framagit.org/Pathe/coffeestains}}
+\renewcommand{\today}{Versiunea \gitRel{} -- \DTMtoday{}}
+\maketitle
+
+\coffeestainA{0.9}{0.85}{-25}{5cm}{1.3cm}
+\label{stainA}
+\section{Introducere}
+Acest pachet oferă o caracteristică esențială pentru \LaTeX~, care lipsește de prea mult timp. Adaugă o pată de cafea pe documentele dumneavoastră. Se poate economisi mult timp prin imprimarea petelor direct pe pagină, în loc să le adăugați manual. Puteți alege dintre patru tipuri diferite de pete:
+\begin{itemize}
+\item[A.] $270^\circ$ pată de cerc cu două stropi mici, ca pe \vpageref{stainA}
+  \item[B.] $60^\circ$ pată de cerc, ca pe \vpageref{stainB}
+  \item[C.] două stropiri cu culori deschise, ca la \vpageref{stainC}
+  \item[D.] și un splash dublu colorat, ca la \vpageref{stainD}
+\end{itemize}
+
+\section{Utilizare}
+Pentru a utiliza pachetul, este suficient să plasați fișierul \texttt{coffeestains.sty} în directorul cu toate celelalte fișiere \texttt{.tex} \emph{sau} să îl instalați în mod corespunzător (consultați manualul distribuției dumneavoastră). Apoi, includeți următoarea linie în antetul documentului dvs:
+\begin{verbatim}
+\usepackage{coffeestains}
+\end{verbatim}
+
+\vfill{}
+
+\begin{tcolorbox}
+Comanda folosită pentru pata de cafea de mai sus este
+
+  \verb|\coffeestainA{0.9}{0.85}{-25}{5cm}{1.3cm}|
+\end{tcolorbox}
+\newpage{}
+\coffeestainB{0.7}{1}{-30}{18 pt}{-135 pt}
+\label{stainB}
+
+Pentru a plasa o pată de cafea pe o pagină, introduceți una dintre următoarele comenzi în codul sursă al paginii respective: 
+\begin{verbatim}
+\coffeestainA{alfa}{scară}{unghi}{abscisă}{ordonată}
+\coffeestainB{alfa}{scară}{unghi}{abscisă}{ordonată}
+\coffeestainC{alfa}{scară}{unghi}{abscisă}{ordonată}
+\coffeestainD{alfa}{scară}{unghi}{abscisă}{ordonată}
+\end{verbatim}
+
+\begin{itemize}
+\item \texttt{alfa} este factorul de transparență $\in [0,1]$;
+\item \texttt{scară} este factorul de scară, iar standardul este \texttt{scară}=1;
+\item \texttt{unghi} este unghiul petei, în raport cu centrul acesteia. Este exprimat în grade $\in [0,360]$;
+\item abscisa și ordonata sunt exprimate în funcție de centrul paginii, care are coordonatele (0, 0). Specificarea unei unități de măsură pare o idee bună, dar nu putem fi prea prescriptivi.
+\end{itemize}
+
+
+\section{Drepturi de autor}
+Puteți distribui liber acest pachet, deoarece nu credem în proprietatea
+imaginară. Toate petele au fost făcute de unul singur, fotografiate de Hanno
+Rein, prelucrate cu gimp și trasate cu Inkscape. Donațiile ar trebui să fie
+făcute numai în cafea la
+\begin{quote}
+Hanno Rein\\
+University of Toronto at Scarborough\\
+DPES Physics and Astrophysics\\
+1265 Military Trail\\
+Toronto, Ontario M1C 1A4\\
+Canada
+\end{quote}
+
+\section{Îmbunătățiri dorite}
+Acest pachet ajută în mod evident, dar multe pete sunt încă adăugate manual la
+documente: pete de cafea cu lapte, pete de ceai, pete de gazpacho\dots{} toate
+acestea ar trebui să fie tipărite în viitor.
+
+Iar eforturile noastre trebuie să meargă dincolo de petele lichide: câte
+documente își primesc manual petele de grăsime tipărite în atelierele de
+reparații? Comunitatea \LaTeX{} trebuie să abordeze această problemă și să
+creeze instrumentele adecvate.
+
+\vfill{}
+
+\begin{tcolorbox}
+Comanda folosită pentru pata de cafea de mai sus este
+
+  \verb|\coffeestainB{0.7}{1}{-30}{18 pt}{-135 pt}|
+\end{tcolorbox}
+\newpage{}
+\section{Jurnal de modificări}
+\begin{itemize}
+\item 3 aprilie 2009: pata de cafea inițială de Hanno Rein. Această versiune
+  este încă disponibilă la
+  \url{http://legacy.hanno-rein.de/hanno-rein.de/archives/349}. În versiunea
+  actuală git repository, această versiune este acum etichetată 0.1.
+\item 23 noiembrie 2010: \texttt{coffee2.sty}, o versiune îmbunătățită care
+  funcționează cu pdflatex. Mulțumiri lui \href{http://www.sultanik.com/}{Evan
+    Sultanik}! Această versiune este acum etichetată 0.2.
+\item 24 martie 2011: \texttt{coffee3}, o altă versiune îmbunătățită care funcționează cu pdflatex.
+și vă permite să scalați, să rotiți și să modificați transparența oricărei pete de cafea.
+Mulțumiri \href{http://pcmap.unizar.es/~pilar/}{profesorului Luis
+    Randez}! Această versiune este acum etichetată 0.3.
+\item 25 mai 2012: \texttt{coffee4} o versiune îmbunătățită de către
+  \href{http://nepsweb.co.uk/homeapr/}{Adrian Robson}, care scrie: "Am constatat
+  că rareori reușesc să îmi pun cana de cafea exact în mijlocul hârtii. Așa că
+  am modificat coffee3.sty pentru a suporta petele de cafea descentrate." Acest
+  versiune este acum etichetată 0.4.
+\item 1 mai 2021: pachetul \texttt{coffeestains} pe un depozit git. A fost
+  modificată rotația petelor este acum relativă la centrul petei în sine, nu mai
+  este relativă la centrul de paginii. Versiunea 0.5 de Patrick Bideault.
+\end{itemize}
+\coffeestainC{1}{1}{180}{0}{-5 mm}
+\label{stainC}
+
+\section{Apoftegme și maxime}
+
+Cafeaua este grozavă.
+
+\vspace{5mm}
+
+\noindent
+Cafeaua va salva lumea.
+
+\vfill{}
+
+\begin{tcolorbox}
+  Comanda folosită pentru pata de cafea de mai sus este
+
+  \verb|\coffeestainC{1}{1}{180}{0}{-5 mm}|
+\end{tcolorbox}
+
+\begin{tcolorbox}
+Comanda utilizată pentru pata de cafea de pe pagina următoare este
+
+  \verb|\coffeestainD{0.4}{0.5}{90}{3 cm}{4 cm}|
+\end{tcolorbox}
+
+\newpage{}
+\pagestyle{empty}
+~\\
+
+\coffeestainD{0.4}{0.5}{90}{3 cm}{4 cm}
+\label{stainD}
+
+\vfill{}
+\begin{center}
+\textsc{Această pagină a fost lăsată intenționat goală}
+
+dar trebuia să o stricăm anunțându-vă.
+\end{center}
+
+\vfill{}
+\end{document}

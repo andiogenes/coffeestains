@@ -1,0 +1,180 @@
+\documentclass[a4paper, 11pt, BCOR = 0 pt, oneside]{scrartcl}
+\usepackage{tikz}
+\usepackage{fancyvrb}
+\usetikzlibrary{arrows, shapes}
+\usepackage[light, largesmallcaps]{kpfonts}
+\usepackage{coffeestains}
+\usepackage[useregional]{datetime2}
+\usepackage{gitinfo2}
+\usepackage{scrlayer-scrpage}
+\usepackage{tcolorbox}
+\usepackage{varioref}
+\usepackage[italian]{babel}
+\author{Patrick Bideault}
+\usepackage{hyperref}
+\hypersetup{
+	  pdftitle = LaTeX Coffee Stains,
+          colorlinks,
+	  linkcolor={brown!60!black},
+          citecolor={brown!60!black},
+          urlcolor={brown!60!black}
+        }
+\ifoot{\textsf{\textcolor{lightgray}{version \gitRel{} -- \DTMtoday}
+  }}
+\cfoot{}
+\ofoot{\textsf{\thepage}}
+
+\begin{document}
+
+\title{LaTeX Coffee Stains}
+\author{un pacchetto di Hanno Rein\\
+mantenuto da Patrick Bideault\\
+  \texttt{pb-latex@gmx.fr}\\
+  ~\\
+  \url{https://framagit.org/Pathe/coffeestains}}
+\renewcommand{\today}{version \gitRel{} -- \DTMtoday{}}
+\maketitle
+
+\coffeestainA{0.9}{0.85}{-25}{5cm}{1.3cm}
+\label{stainA}
+\section{Introduzione}
+Questo pacchetto fornisce una funzione essenziale a \LaTeX~che mancava da troppo
+tempo. Aggiunge una macchia di caffè ai documenti. È possibile risparmiare molto
+tempo stampando le macchie direttamente sulla pagina invece di aggiungerle
+manualmente. È possibile scegliere tra quattro diversi tipi di macchia:
+\begin{itemize}
+\item[A.] $270^\circ$ macchia circolare con due piccoli schizzi, come in \vpageref{stainA}
+  \item[B.] macchia circolare da $60^\circ$, come nella \vpageref{stainB}
+  \item[C.] due schizzi con colori chiari, come a \vpageref{stainC}
+  \item[D.] e uno schizzo gemello colorato, come a \vpageref{stainD}
+\end{itemize}
+
+\section{Utilizzo}
+Per utilizzare il pacchetto, è sufficiente inserire il file \texttt{coffeestains.sty} nella directory con tutti gli altri file \texttt{.tex} \textit{o} installarlo correttamente (consultare il manuale della distribuzione). Includere quindi la seguente riga nell'intestazione del documento:
+\begin{verbatim}
+\usepackage{coffeestains}
+\end{verbatim}
+
+\vfill{}
+
+\begin{tcolorbox}
+  Il comando utilizzato per la macchia di caffè di cui sopra è
+
+  \verb|\coffeestainA{0.9}{0.85}{-25}{5cm}{1.3cm}|
+\end{tcolorbox}
+\newpage{}
+\coffeestainB{0.7}{1}{-30}{18 pt}{-135 pt}
+\label{stainB}
+
+Per posizionare una macchia di caffè su una pagina, inserire uno dei seguenti comandi nel codice sorgente della pagina in questione della pagina interessata:
+\begin{verbatim}
+\coffeestainA{alfa}{scala}{angolo}{ascissa}{ordinata}
+\coffeestainB{alfa}{scala}{angolo}{ascissa}{ordinata}
+\coffeestainC{alfa}{scala}{angolo}{ascissa}{ordinata}
+\coffeestainD{alfa}{scala}{angolo}{ascissa}{ordinata}
+\end{verbatim}
+
+\begin{itemize}
+\item \texttt{alfa} è il fattore di trasparenza $\in [0,1]$;
+\item \texttt{scala} è il fattore di scala e lo standard è \texttt{scala}=1;
+\item \texttt{angolo} è l'angolo della macchia rispetto al suo centro. È espresso in gradi $\in [0,360]$;
+\item l'ascissa e l'ordinata sono espresse in termini del centro della pagina, che ha coordinate (0, 0). Specificare un'unità di misura sembra una buona idea, ma non possiamo essere troppo prescrittivi. ma non possiamo essere troppo prescrittivi.
+\end{itemize}
+
+
+\section{Diritti d'autore}
+È possibile distribuire liberamente questo pacchetto, poiché non crediamo nella
+proprietà immaginaria. Tutte le macchie sono state autoprodotte, fotografate da
+Hanno Rein, elaborate con Gimp e tracciate con Inkscape. Le donazioni devono
+essere fatte solo in caffè a
+\begin{quote}
+Hanno Rein\\
+University of Toronto at Scarborough\\
+DPES Physics and Astrophysics\\
+1265 Military Trail\\
+Toronto, Ontario M1C 1A4\\
+Canada
+\end{quote}
+
+\section{Miglioramenti desiderati}
+Questo pacchetto ovviamente aiuta, ma molte macchie vengono ancora aggiunte
+manualmente ai documenti: macchie di latte, macchie di tè, macchie di
+gazpacho\dots{} tutte dovrebbero essere stampate in futuro.
+
+E i nostri sforzi devono andare oltre le macchie di liquidi: quanti documenti
+vengono stampati manualmente con macchie di grasso nelle officine di
+riparazione? La comunità \LaTeX{} deve affrontare questo problema e creare gli
+strumenti adeguati.
+
+\vfill{}
+
+\begin{tcolorbox}
+Il comando utilizzato per la macchia di caffè di cui sopra è
+
+  \verb|\coffeestainB{0.7}{1}{-30}{18 pt}{-135 pt}|
+\end{tcolorbox}
+\newpage{}
+\section{Registro delle modifiche}
+\begin{itemize}
+\item 3 aprile 2009: macchia di caffè iniziale di Hanno Rein. Questa versione
+  è ancora disponibile all'indirizzo
+  \url{http://legacy.hanno-rein.de/hanno-rein.de/archives/349}. Nel repository
+  git, questa versione è ora etichettata come 0.1.
+\item 23 novembre 2010: \texttt{coffee2.sty}, una versione migliorata che
+  funziona con pdflatex.  Grazie a \href{http://www.sultanik.com/}{Evan
+    Sultanik}! Questa versione è ora contrassegnata come 0.2.
+\item 24 marzo 2011: \texttt{coffee3}, un'altra versione migliorata che funziona con pdflatex
+e consente di scalare, ruotare e modificare la trasparenza di qualsiasi macchia di caffè.
+Grazie al \href{http://pcmap.unizar.es/~pilar/}{professor Luis
+    Randez}! Questa versione è ora etichettata come 0.3.
+\item 25 maggio 2012: \texttt{coffee4}, una versione migliorata da
+  \href{http://nepsweb.co.uk/homeapr/}{Adrian Robson}, che scrive: "Mi accorgo
+  che raramente riesco a posare la mia tazza di caffè esattamente nel mezzo dei
+  miei documenti. Ho quindi modificato coffee3.sty per supportare le macchie di
+  caffè decentrate". Questa versione è ora contrassegnata come 0.4.
+\item 1 maggio 2021: il pacchetto \texttt{coffeestains} su un repository git. La
+  rotazione delle macchie è ora relativa al centro della macchia stessa, non più
+  al centro della pagina.  della pagina. Versione 0.5 di Patrick Bideault.
+\end{itemize}
+\coffeestainC{1}{1}{180}{0}{-5 mm}
+\label{stainC}
+
+\section{Apoftegmi e massime}
+
+Il caffè è fantastico.
+
+\vspace{5mm}
+
+\noindent
+Il caffè salverà il mondo.
+
+\vfill{}
+
+\begin{tcolorbox}
+Il comando utilizzato per la macchia di caffè qui sopra è
+
+  \verb|\coffeestainC{1}{1}{180}{0}{-5 mm}|
+\end{tcolorbox}
+
+\begin{tcolorbox}
+Il comando utilizzato per la macchia di caffè della pagina successiva è
+
+  \verb|\coffeestainD{0.4}{0.5}{90}{3 cm}{4 cm}|
+\end{tcolorbox}
+
+\newpage{}
+\pagestyle{empty}
+~\\
+
+\coffeestainD{0.4}{0.5}{90}{3 cm}{4 cm}
+\label{stainD}
+
+\vfill{}
+\begin{center}
+\textsc{Questa pagina è stata lasciata intenzionalmente vuota}
+
+ma dovevamo rovinarla facendovelo sapere.
+\end{center}
+
+\vfill{}
+\end{document}

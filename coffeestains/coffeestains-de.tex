@@ -1,0 +1,181 @@
+\documentclass[a4paper, 11pt, BCOR = 0 pt, oneside]{scrartcl}
+\usepackage{tikz}
+\usepackage{fancyvrb}
+\usetikzlibrary{arrows, shapes}
+\usepackage[light, largesmallcaps]{kpfonts}
+\usepackage{coffeestains}
+\usepackage[useregional]{datetime2}
+\usepackage{gitinfo2}
+\usepackage{scrlayer-scrpage}
+\usepackage{tcolorbox}
+\usepackage{varioref}
+\usepackage[german]{babel}
+\author{Patrick Bideault}
+\usepackage{hyperref}
+\hypersetup{
+	  pdftitle = LaTeX Coffee Stains,
+          colorlinks,
+	  linkcolor={brown!60!black},
+          citecolor={brown!60!black},
+          urlcolor={brown!60!black}
+        }
+\ifoot{\textsf{\textcolor{lightgray}{version \gitRel{} -- \DTMtoday}
+  }}
+\cfoot{}
+\ofoot{\textsf{\thepage}}
+
+\begin{document}
+
+\title{LaTeX Coffee Stains}
+\author{ein Paket von Hanno Rein\\
+gepflegt von Patrick Bideault\\% vérifier
+  \texttt{pb-latex@gmx.fr}\\
+  ~\\
+  \url{https://framagit.org/Pathe/coffeestains}}
+\renewcommand{\today}{Version \gitRel{} -- \DTMtoday{}}
+\maketitle
+
+\coffeestainA{0.9}{0.85}{-25}{5cm}{1.3cm}
+\label{stainA}
+\section{Einführung}
+Dieses Paket bietet eine wesentliche Funktion für \LaTeX~, die zu lange gefehlt
+hat. Es fügt einen Kaffeefleck zu Ihren Dokumenten hinzu. Sie können viel Zeit
+sparen, indem Sie Flecken direkt auf die Seite drucken, anstatt sie manuell
+hinzuzufügen. Sie können zwischen vier verschiedenen Fleckentypen wählen:
+\begin{itemize}
+\item[A.] $270^\circ$ Kreisfleck mit zwei winzigen Spritzern, wie auf \vpageref{stainA}
+  \item[B.] $60^\circ$ Kreisfleck, wie auf der \vpageref{stainB}
+  \item[C.] zwei Spritzer mit hellen Farben, wie auf \vpageref{stainC}
+  \item[D.] und ein bunter Zwillingsspritzer, wie auf \vpageref{stainD}
+\end{itemize}
+
+\section{Verwendung}
+Um das Paket zu verwenden, legen Sie einfach die Datei \texttt{coffeestains.sty} in das Verzeichnis mit allen \texttt{.tex}-Dateien \emph{oder} installieren Sie es ordnungsgemäß (lesen Sie dazu das Handbuch Ihrer Distribution). Dann fügen Sie die folgende Zeile in die Kopfzeile Ihres Dokuments ein:
+\begin{verbatim}
+\usepackage{coffeestains}
+\end{verbatim}
+
+\vfill{}
+
+\begin{tcolorbox}
+Der für den obigen Kaffeefleck verwendete Befehl lautet
+
+  \verb|\coffeestainA{0.9}{0.85}{-25}{5cm}{1.3cm}|
+\end{tcolorbox}
+\newpage{}
+\coffeestainB{0.7}{1}{-30}{18 pt}{-135 pt}
+\label{stainB}
+
+Um einen Kaffeefleck auf einer Seite zu platzieren, fügen Sie einen der folgenden Befehle in den Quellcode der betreffenden Seite ein:
+\begin{verbatim}
+\coffeestainA{alpha}{Maßstab}{Winkel}{Abszisse}{Ordinate}
+\coffeestainB{alpha}{Maßstab}{Winkel}{Abszisse}{Ordinate}
+\coffeestainC{alpha}{Maßstab}{Winkel}{Abszisse}{Ordinate}
+\coffeestainD{alpha}{Maßstab}{Winkel}{Abszisse}{Ordinate}
+\end{verbatim}
+
+\begin{itemize}
+\item \texttt{alpha} ist der Transparenzfaktor $\in [0,1]$;
+\item \texttt{Maßstab} ist der Skalierungsfaktor, und der Standard ist \texttt{Maßstab}=1;
+\item \texttt{Winkel} ist der Winkel des Flecks, bezogen auf seinen
+  Mittelpunkt. Er wird in Grad $\in [0,360]$ angegeben;
+\item die Abszisse und die Ordinate werden in Bezug auf den Mittelpunkt der Seite ausgedrückt, der die Koordinaten (0, 0) hat. Eine Maßeinheit anzugeben, scheint eine gute Idee zu sein, aber wir können nicht zu viel vorschreiben.
+\end{itemize}
+
+
+\section{Impressum}
+Sie können dieses Paket frei weitergeben, da wir nicht an imaginäres Eigentum
+glauben. Alle Flecken wurden selbst gemacht, von Hanno Rein fotografiert, mit
+Gimp bearbeitet und mit Inkscape nachgezeichnet. Spenden in Kaffee bitte nur an
+\begin{quote}
+Hanno Rein\\
+University of Toronto at Scarborough\\
+DPES Physics and Astrophysics\\
+1265 Military Trail\\
+Toronto, Ontario M1C 1A4\\
+Canada
+\end{quote}
+
+\section{Gewünschte Verbesserungen}
+Dieses Paket ist natürlich hilfreich, aber viele Flecken werden immer noch
+manuell zu den Dokumenten hinzugefügt: Latte-Flecken, Tee-Flecken,
+Gazpacho-Flecken\dots{} sie alle sollten in Zukunft gedruckt werden.
+
+Und unsere Bemühungen sollen über die flüssigen Flecken hinausgehen: Wie viele
+Dokumente werden Fettflecken in Werkstätten manuell gedruckt? Die
+\LaTeX{}-Gemeinschaft soll sich diesem Problem und schafft die entsprechenden
+Werkzeuge.
+
+\vfill{}
+
+\begin{tcolorbox}
+  Der Befehl, der für den oben genannten Kaffeefleck ist
+
+  \verb|\coffeestainB{0.7}{1}{-30}{18 pt}{-135 pt}|
+\end{tcolorbox}
+\newpage{}
+\section{Änderungsprotokoll}
+\begin{itemize}
+\item 3. April 2009: erster Kaffeefleck von Hanno Rein. Diese Version ist noch verfügbar unter
+ \url{http://legacy.hanno-rein.de/hanno-rein.de/archives/349}. Im aktuellen
+git-Repository ist diese Version jetzt als 0.1 gekennzeichnet.
+\item 23. November 2010: \texttt{coffee2.sty}, eine verbesserte Version, die mit
+  pdflatex funktioniert.  Dank an \href{http://www.sultanik.com/}{Evan
+    Sultanik}Evan Sultanik! Diese Version ist jetzt mit 0.2 gekennzeichnet.
+\item 24. März 2011: \texttt{coffee3}, eine weitere verbesserte Version, die mit
+  pdflatex funktioniert arbeitet und es erlaubt, jeden Kaffeefleck zu skalieren,
+  zu drehen und seine Transparenz zu verändern. Dank an
+  \href{http://pcmap.unizar.es/~pilar/}{Herr Professor Luis Randez}! Diese
+  Version ist jetzt mit 0.3 gekennzeichnet.
+\item 25. Mai 2012: \texttt{coffee4}, eine verbesserte Version von
+  \href{http://nepsweb.co.uk/homeapr/}{Adrian Robson}, der schreibt: „Ich stelle
+  fest, dass ich es selten schaffe, meine Kaffeetasse genau in der Mitte meiner
+  Papiers abzustellen. Deshalb habe ich coffee3.sty so geändert, dass es nun
+  auch exzentrische Kaffeeflecken unterstützt.“ Diese Version ist nun mit 0.4
+  gekennzeichnet.
+\item 1. Mai 2021: das \texttt{coffeestains}-Paket in einem Git-Repository. Die Rotation der
+Flecken ist nun relativ zur Mitte des Fleckes selbst, nicht mehr zur Mitte der Seite.
+der Seite. Version 0.5 von Patrick Bideault.
+\end{itemize}
+\coffeestainC{1}{1}{180}{0}{-5 mm}
+\label{stainC}
+
+\section{Apophtegmen und Maximen}
+
+Kaffee ist großartig.
+
+\vspace{5mm}
+
+\noindent
+Kaffee wird die Welt retten.
+
+\vfill{}
+
+\begin{tcolorbox}
+Der für den obigen Kaffeefleck verwendete Befehl lautet
+
+  \verb|\coffeestainC{1}{1}{180}{0}{-5 mm}|
+\end{tcolorbox}
+
+\begin{tcolorbox}
+Der Befehl, der für den Kaffeefleck auf der nächsten Seite verwendet wird, lautet
+
+  \verb|\coffeestainD{0.4}{0.5}{90}{3 cm}{4 cm}|
+\end{tcolorbox}
+
+\newpage{}
+\pagestyle{empty}
+~\\
+
+\coffeestainD{0.4}{0.5}{90}{3 cm}{4 cm}
+\label{stainD}
+
+\vfill{}
+\begin{center}
+\textsc{Diese Seite wurde absichtlich leer gelassen}
+
+aber wir mussten sie ruinieren, indem wir es Ihnen mitteilen.
+\end{center}
+
+\vfill{}
+\end{document}

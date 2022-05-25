@@ -1,0 +1,181 @@
+\documentclass[a4paper, 11pt, BCOR = 0 pt, oneside]{scrartcl}
+\usepackage{tikz}
+\usepackage{fancyvrb}
+\usetikzlibrary{arrows, shapes}
+\usepackage[light, largesmallcaps]{kpfonts}
+\usepackage{coffeestains}
+\usepackage[useregional]{datetime2}
+\usepackage{gitinfo2}
+\usepackage{scrlayer-scrpage}
+\usepackage{tcolorbox}
+\usepackage{varioref}
+\usepackage[portuguese]{babel}
+\author{Patrick Bideault}
+\usepackage{hyperref}
+\hypersetup{
+	  pdftitle = LaTeX Coffee Stains,
+          colorlinks,
+	  linkcolor={brown!60!black},
+          citecolor={brown!60!black},
+          urlcolor={brown!60!black}
+        }
+\ifoot{\textsf{\textcolor{lightgray}{version \gitRel{} -- \DTMtoday}
+  }}
+\cfoot{}
+\ofoot{\textsf{\thepage}}
+
+\begin{document}
+
+\title{LaTeX Coffee Stains}
+\author{um pacote da Hanno Rein\\
+mantido por Patrick Bideault\\
+  \texttt{pb-latex@gmx.fr}\\
+  ~\\
+  \url{https://framagit.org/Pathe/coffeestains}}
+\renewcommand{\today}{versão \gitRel{} -- \DTMtoday{}}
+\maketitle
+
+\coffeestainA{0.9}{0.85}{-25}{5cm}{1.3cm}
+\label{stainA}
+\section{Introdução}
+Este pacote fornece uma característica essencial ao \LaTeX~que está em falta há
+demasiado tempo. Adiciona uma nódoa de café aos seus documentos. Muito tempo
+pode ser poupado imprimindo nódoas directamente na página em vez de os adicionar manualmente. Pode escolher entre quatro tipos de manchas diferentes:
+\begin{itemize}
+\item[A.] $270^\circ$ mancha de círculo com dois pequenos salpicos, como \vpageref{stainA}
+  \item[B.] $60^\circ$ mancha de círculo, como na \vpageref{stainB}
+  \item[C.] dois salpicos com cores claras, como na \vpageref{stainC}
+  \item[D.] e um salpico duplo colorido, como na \vpageref{stainD}
+\end{itemize}
+
+\section{Utilização}
+Para utilizar o pacote, basta colocar o ficheiro \texttt{coffeestains.sty} no directório com todos os seus outros ficheiros \texttt{.tex} \textit{ou} instalá-lo correctamente (consultar o manual de distribuição). Em seguida, inclua a seguinte linha no cabeçalho do seu documento:
+\begin{verbatim}
+\usepackage{coffeestains}
+\end{verbatim}
+
+\vfill{}
+
+\begin{tcolorbox}
+O comando utilizado para a mancha de café acima é
+
+  \verb|\coffeestainA{0.9}{0.85}{-25}{5cm}{1.3cm}|
+\end{tcolorbox}
+\newpage{}
+\coffeestainB{0.7}{1}{-30}{18 pt}{-135 pt}
+\label{stainB}
+
+Para colocar uma mancha de café numa página, colocar um dos seguintes comandos
+no código fonte da página relevante:
+
+\begin{verbatim}
+\coffeestainA{alfa}{escala}{ângulo}{abcissa}{ordenado}
+\coffeestainB{alfa}{escala}{ângulo}{abcissa}{ordenado}
+\coffeestainC{alfa}{escala}{ângulo}{abcissa}{ordenado}
+\coffeestainD{alfa}{escala}{ângulo}{abcissa}{ordenado}
+\end{verbatim}
+
+\begin{itemize}
+\item \texttt{alpha} é o factor de transparência $\in [0,1]$;
+\item \texttt{escala} é o factor de escala, e o padrão é \texttt{escala}=1;
+\item \texttt{ângulo} é o ângulo da mancha, em relação ao seu centro. Está em graus $\in [0,360]$;
+\item abcissa e ordenado são expressas em termos do centro da página, que tem as coordenadas (0, 0). Especificar uma unidade de medida parece ser uma boa ideia, mas não podemos ser demasiado prescritivos.
+\end{itemize}
+
+
+\section{Direitos autorais}
+Pode distribuir livremente este pacote uma vez que não acreditamos em
+propriedade imaginária. Todas as manchas foram feitas por si, fotografadas por
+Hanno Rein, processadas com gimp e rastreadas com Inkscape. As doações devem ser
+feitas em café apenas para
+\begin{quote}
+Hanno Rein\\
+University of Toronto at Scarborough\\
+DPES Physics and Astrophysics\\
+1265 Military Trail\\
+Toronto, Ontario M1C 1A4\\
+Canada
+\end{quote}
+
+\section{Melhoramentos desejados}
+Este pacote ajuda obviamente, mas muitas nódoas ainda são adicionadas
+manualmente aos documentos: nódoas de latte, nódoas de chá, nódoas de
+gaspacho\dots{} todas elas devem ser impressas no futuro.
+
+E os nossos esforços devem ir além das nódoas líquidas: quantos documentos têm
+as suas nódoas de gordura impressas manualmente nas oficinas de reparação?
+A comunidade \LaTeX{} deverá abordar esta questão e criar as ferramentas
+adequadas.
+
+\vfill{}
+
+\begin{tcolorbox}
+O comando utilizado para a mancha de café acima é
+
+  \verb|\coffeestainB{0.7}{1}{-30}{18 pt}{-135 pt}|
+\end{tcolorbox}
+\newpage{}
+\section{Registo de alterações}
+\begin{itemize}
+\item 3 de Abril de 2009: mancha inicial de café da Hanno Rein. Esta versão
+  ainda está disponível em
+  \url{http://legacy.hanno-rein.de/hanno-rein.de/archives/349}. No actual git
+  repositório, esta versão está agora marcada com 0.1.
+\item 23 de Novembro de 2010: \texttt{coffee2.sty}, uma versão melhorada que
+  funciona com pdflatex.  Graças a \href{http://www.sultanik.com/}{Evan
+    Sultanik}! Esta versão está agora marcada com 0.2.
+\item 24 de Março de 2011: \texttt{coffee3}, outra versão melhorada que funciona com o pdflatex
+e permite escalar, rodar e alterar a transparência de qualquer mancha de café.
+Graças ao \href{http://pcmap.unizar.es/~pilar/}{Professor Luis
+    Randez}! Esta versão está agora marcada com 0.3.
+\item 25 de Maio de 2012: \texttt{coffee4}, uma versão melhorada por
+  \href{http://nepsweb.co.uk/homeapr/}{Adrian Robson}, que escreve: "Acho que
+  raramente consigo deitar a minha caneca de café exactamente no meio do meu
+  documentos. Assim, alterei o café3.sty para suportar manchas de café fora do
+  centro". Isto versão está agora marcada com 0.4.
+\item 1 de Maio de 2021: o pacote \texttt{coffeestains} sobre um repositório de
+  git. A rotação do manchas é agora relativa ao centro da mancha em si, já não
+  ao centro de a página. Versão 0.5 por Patrick Bideault.
+\end{itemize}
+\coffeestainC{1}{1}{180}{0}{-5 mm}
+\label{stainC}
+
+\section{Lemas eternos}
+
+O café é óptimo.
+
+\vspace{5mm}
+
+\noindent
+O café vai salvar o mundo.
+
+\vfill{}
+
+\begin{tcolorbox}
+O comando utilizado para a mancha de café acima é
+
+  \verb|\coffeestainC{1}{1}{180}{0}{-5 mm}|
+\end{tcolorbox}
+
+\begin{tcolorbox}
+O comando utilizado para a mancha de café na página seguinte é
+
+  \verb|\coffeestainD{0.4}{0.5}{90}{3 cm}{4 cm}|
+\end{tcolorbox}
+
+\newpage{}
+\pagestyle{empty}
+~\\
+
+\coffeestainD{0.4}{0.5}{90}{3 cm}{4 cm}
+\label{stainD}
+
+\vfill{}
+\begin{center}
+\textsc{Esta página foi intencionalmente deixada em branco}
+
+mas tivemos de arruiná-lo, deixando-o saber.
+\end{center}
+
+\vfill{}
+\end{document}
